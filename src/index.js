@@ -42,7 +42,6 @@ function countrySearch() {
       if (data.length === 1) {
         const markupInfo = data.map(
           element =>
-            // console.log(Object.values(element.languages))
             `<div class="country"><img src='${element.flags.svg}' alt='${
               element.flags.svg
             }' class='country-img' />

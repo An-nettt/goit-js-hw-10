@@ -3,8 +3,6 @@ import Notiflix from 'notiflix';
 export class FetchCountriesAPI {
   #BASE_URL = 'https://restcountries.com/v3.1';
 
-  name = null;
-
   fetchCountries(name) {
     return fetch(
       `${this.#BASE_URL}/name/${
