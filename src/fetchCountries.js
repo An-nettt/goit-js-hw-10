@@ -10,9 +10,7 @@ export class FetchCountriesAPI {
       }?fields=name,capital,population,flags,languages`
     ).then(res => {
       if (!res.ok) {
-        throw new Error(
-          Notiflix.Notify.failure('Oops, there is no country with that name')
-        );
+        throw new Error(res.status);
       }
       return res.json();
     });
