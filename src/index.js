@@ -16,6 +16,7 @@ refs.inputEl.addEventListener('input', debounce(countrySearch, DEBOUNCE_DELAY));
 
 function countrySearch() {
   fetchCountriesAPI.name = refs.inputEl.value.trim();
+
   clearMarkUp();
 
   if (fetchCountriesAPI.name !== '') {
@@ -28,10 +29,10 @@ function countrySearch() {
           );
         }
         if ((data.length < 10) & (data.length > 2)) {
-          markuplist();
+          markuplist(data);
         }
         if (data.length === 1) {
-          markupInfo();
+          markupInfo(data);
         }
       })
       .catch(
@@ -45,8 +46,8 @@ function clearMarkUp() {
   refs.infoEl.innerHTML = '';
 }
 
-function markuplist() {
-  data
+function markuplist(el) {
+  const countryList = el
     .map(
       element =>
         `<li class="list-item">
@@ -56,11 +57,11 @@ function markuplist() {
     )
     .join('');
 
-  refs.listEl.innerHTML = markuplist;
+  refs.listEl.innerHTML = countryList;
 }
 
-function markupInfo() {
-  data.map(
+function markupInfo(el) {
+  const countryInfo = el.map(
     element =>
       `<div class="country"><img src='${element.flags.svg}' alt='${
         element.flags.svg
@@ -77,5 +78,5 @@ function markupInfo() {
             )}</span></div>`
   );
 
-  refs.infoEl.innerHTML = markupInfo;
+  refs.infoEl.innerHTML = countryInfo;
 }
